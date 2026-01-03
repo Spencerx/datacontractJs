@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
             {/* Deprecation Banner */}
-            <DeprecationBanner />
+            {/*<DeprecationBanner />*/}
 
             <main>
             {/* Hero Section */}
@@ -33,15 +33,16 @@ function App() {
               </div>
             </div>
 
-            {/* Introduction */}
+            {/* Introduction - What is a Data Contract */}
             <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-                <div id="what-is" className="prose max-w-none">
-                    <p>
+                <article id="what-is" className="prose max-w-none" itemScope itemType="https://schema.org/Article">
+                    <h2 className="sr-only" itemProp="headline">What is a Data Contract?</h2>
+                    <p itemProp="description">
                         A data contract is a document that defines the ownership, structure, semantics, quality, and terms
                         of use for exchanging data between a data producer and their consumers. Think of an API, but for
                         data.
                     </p>
-                </div>
+                </article>
             </section>
 
             <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">

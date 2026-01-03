@@ -3,23 +3,261 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Contract</title>
-    <meta name="description" content="A data contract defines the ownership, structure, semantics, quality, and terms of use for exchanging data between a data producer and their consumers." />
+    <link rel="canonical" href="https://datacontract.com/" />
+
+    <!-- Primary Meta Tags -->
+    <title>Data Contracts: The Complete Guide to Data Contract Standards, Tools & Best Practices</title>
+    <meta name="description" content="Learn everything about data contracts: what they are, why they matter, and how to implement them. Explore the Open Data Contract Standard (ODCS), free tools like the Data Contract CLI and Editor, and best practices for data governance." />
+    <meta name="keywords" content="data contract, data contracts, ODCS, Open Data Contract Standard, data quality, data governance, data mesh, data products, data catalog, schema validation, data producer, data consumer, API for data" />
+    <meta name="author" content="Entropy Data" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://datacontract.com/" />
-    <meta property="og:title" content="Data Contracts - Trust in Data" />
-    <meta property="og:description" content="A data contract defines the ownership, structure, semantics, quality, and terms of use for exchanging data between a data producer and their consumers." />
+    <meta property="og:title" content="Data Contracts: The Complete Guide to Data Contract Standards, Tools & Best Practices" />
+    <meta property="og:description" content="Learn everything about data contracts: what they are, why they matter, and how to implement them. Explore the Open Data Contract Standard (ODCS), free tools, and best practices." />
     <meta property="og:image" content="https://datacontract.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="datacontract.com" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://datacontract.com/" />
-    <meta property="twitter:title" content="Data Contracts - Trust in Data" />
-    <meta property="twitter:description" content="A data contract defines the ownership, structure, semantics, quality, and terms of use for exchanging data between a data producer and their consumers." />
-    <meta property="twitter:image" content="https://datacontract.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://datacontract.com/" />
+    <meta name="twitter:title" content="Data Contracts: The Complete Guide to Data Contract Standards, Tools & Best Practices" />
+    <meta name="twitter:description" content="Learn everything about data contracts: what they are, why they matter, and how to implement them. Explore the Open Data Contract Standard (ODCS), free tools, and best practices." />
+    <meta name="twitter:image" content="https://datacontract.com/og-image.png" />
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Entropy Data",
+      "url": "https://entropy-data.com",
+      "logo": "https://entropy-data.com/media/logo_fuchsia_v2.svg",
+      "sameAs": [
+        "https://github.com/datacontract",
+        "https://www.linkedin.com/company/entropy-data"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Data Contracts",
+      "url": "https://datacontract.com",
+      "description": "The leading resource for data contracts. Learn about the Open Data Contract Standard (ODCS), data contract tools, and best practices for data governance.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Entropy Data"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: WebPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Data Contracts: The Complete Guide",
+      "description": "A data contract defines the ownership, structure, semantics, quality, and terms of use for exchanging data between a data producer and their consumers.",
+      "url": "https://datacontract.com",
+      "mainEntity": {
+        "@type": "Article",
+        "headline": "What is a Data Contract?",
+        "description": "A data contract is a document that defines the ownership, structure, semantics, quality, and terms of use for exchanging data between a data producer and their consumers. Think of an API, but for data.",
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Jochen Christ",
+            "url": "https://www.linkedin.com/in/jochenchrist/"
+          },
+          {
+            "@type": "Person",
+            "name": "Simon Harrer",
+            "url": "https://www.linkedin.com/in/simonharrer/"
+          }
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Entropy Data",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://entropy-data.com/media/logo_fuchsia_v2.svg"
+          }
+        }
+      }
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage for GEO/AI optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a data contract?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A data contract is a document that defines the ownership, structure, semantics, quality, and terms of use for exchanging data between a data producer and their consumers. Think of an API, but for data. Data contracts specify schemas, data quality rules, SLAs, and metadata to ensure reliable data exchange."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Open Data Contract Standard (ODCS)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Open Data Contract Standard (ODCS) is the industry standard for data contracts, maintained by Bitol, a Linux Foundation project. ODCS 3.1 provides a standardized YAML format for defining data contracts including schema definitions, quality rules, ownership, and terms of use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do data contracts matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Data contracts matter for three key reasons: 1) Communication - they bring data producers and consumers together to capture domain knowledge and specify expectations. 2) Trust - they enable automatic verification that data conforms to agreed specifications. 3) Discovery - they provide metadata for data marketplaces, enabling data consumers and AI agents to find and understand data products."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Data Contract CLI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Data Contract CLI is an open-source command-line tool that enforces data contracts and detects schema drift. It supports all major data platforms including Databricks, Snowflake, AWS, BigQuery, and Azure. It can be used in CI/CD pipelines, Python scripts, as a GitHub Action, or as a web server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I create a data contract?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can create data contracts using the free Data Contract Editor, which provides a visual interface for creating and editing contracts with live HTML preview. Alternatively, use the Data Contract Excel Template or write YAML files following the Open Data Contract Standard specification."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a data contract and an API contract?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While API contracts (like OpenAPI) define how to call a service and what responses to expect, data contracts define the structure, quality, semantics, and terms of use for data itself. Data contracts focus on data products - datasets exchanged between producers and consumers - rather than service interfaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a data contract include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A comprehensive data contract should include: 1) Basic metadata (name, version, description, owner), 2) Schema definitions (tables, columns, data types), 3) Data quality rules (not null, unique, format validations), 4) Team information (owner, support contacts), 5) Terms of use and SLAs, 6) Semantic definitions and business context."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do data contracts relate to data mesh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Data contracts are a core component of data mesh architecture. In data mesh, domain teams own and publish data as products. Data contracts serve as the interface specification between data producers (domain teams) and data consumers, enabling decentralized data ownership while maintaining quality and governance standards."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: SoftwareApplication for CLI -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Data Contract CLI",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Open-source command-line tool to enforce data contracts and detect schema drift. Supports Databricks, Snowflake, AWS, BigQuery, Azure, and more.",
+      "url": "https://github.com/datacontract/datacontract-cli",
+      "downloadUrl": "https://github.com/datacontract/datacontract-cli",
+      "softwareVersion": "latest",
+      "author": {
+        "@type": "Organization",
+        "name": "Entropy Data"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: HowTo for creating data contracts -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Create a Data Contract",
+      "description": "Step-by-step guide to creating a data contract using the Open Data Contract Standard (ODCS)",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Define fundamentals",
+          "text": "Start with basic metadata: specify the data contract kind, API version, unique ID, version number, name, and description."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Define the schema",
+          "text": "Add schema definitions including tables (datasets), columns with their data types, descriptions, and constraints like primary keys."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Add data quality rules",
+          "text": "Specify quality checks such as not null constraints, uniqueness requirements, format validations, and custom business rules."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Specify team ownership",
+          "text": "Document the data product owner, support group, and contact information for accountability and communication."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Test and validate",
+          "text": "Use the Data Contract CLI to test your contract against actual data sources and ensure compliance."
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Data Contract Editor"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Data Contract CLI"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Data Contracts",
+          "item": "https://datacontract.com"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
