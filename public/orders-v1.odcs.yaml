@@ -44,9 +44,6 @@ schema:
         logicalTypeOptions:
           minLength: 10
           maxLength: 10
-        authoritativeDefinitions:
-          - type: definition
-            url: https://example.com/definitions/sales/customer/customer_id
         tags:
           - pii:true
         classification: internal
