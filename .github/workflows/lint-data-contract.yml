@@ -1,0 +1,38 @@
+# Validates the example data contract published at https://datacontract.com/orders-v1.odcs.yaml
+# Runs independently of the Pages deployment, so a failure alerts but never blocks a release.
+name: Lint data contract
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+      - name: Lint
+        run: uvx --from 'datacontract-cli' datacontract lint public/orders-v1.odcs.yaml
+
+  # Same demo database and credentials as the terminal example on the landing page
+  # (see src/App.jsx). Read-only access, published on purpose so visitors can run it.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+      - name: Test against the demo database
+        env:
+          DATACONTRACT_POSTGRES_USERNAME: datacontract_cli.egzhawjonpfweuutedfy
+          DATACONTRACT_POSTGRES_PASSWORD: jio10JuQfDfl9JCCPdaCCpuZ1YO
+        run: uvx --from 'datacontract-cli[postgres]' datacontract test public/orders-v1.odcs.yaml
