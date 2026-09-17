@@ -11,7 +11,7 @@ const getCodeSteps = (fullContractYaml) => [
     title: 'Fundamentals',
     description: 'Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.',
     code: `# !focus(1:6)
-apiVersion: v3.1.0
+apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -22,7 +22,7 @@ status: active`
     id: 'schema',
     title: 'Schema',
     description: 'The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.',
-    code: `apiVersion: v3.1.0
+    code: `apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -64,7 +64,7 @@ schema:
     id: 'quality',
     title: 'Data Quality',
     description: 'Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.',
-    code: `apiVersion: v3.1.0
+    code: `apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -102,7 +102,7 @@ schema:
     id: 'team',
     title: 'Team',
     description: 'Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.',
-    code: `apiVersion: v3.1.0
+    code: `apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -135,7 +135,7 @@ support:
     id: 'description',
     title: 'Terms of Use',
     description: 'Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.',
-    code: `apiVersion: v3.1.0
+    code: `apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -168,7 +168,7 @@ team:
     id: 'sla',
     title: 'SLAs',
     description: 'Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.',
-    code: `apiVersion: v3.1.0
+    code: `apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -196,7 +196,7 @@ slaProperties:
     id: 'servers',
     title: 'Servers',
     description: 'Finally, specify where the data lives. The server configuration includes connection details for different environments.',
-    code: `apiVersion: v3.1.0
+    code: `apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -220,9 +220,45 @@ servers:
     schema: dp_orders_v1`
   },
   {
+    id: 'context',
+    title: 'AI Context',
+    description: 'ODCS 3.2 adds the context block: natural language instructions, verified statements, and constraints that tell AI agents, LLMs, and BI tools how this data is meant to be used \u2014 and what they must not do with it. It works like a system prompt scoped to the contract or to a single table.',
+    code: `apiVersion: v3.2.0
+kind: DataContract
+id: orders
+name: Orders
+version: 1.0.0
+status: active
+# !focus(1:17)
+context:
+  instructions: |
+    This contract describes web shop orders and their line items.
+    Join line_items to orders on line_items.order_id = orders.order_id.
+    All monetary values are integers in cents, so divide them by 100
+    before presenting an amount to a user.
+  verifiedStatements:
+    - id: monthly-revenue
+      question: What was the revenue last month?
+      answer: |
+        Sum orders.order_total for all orders with an order_timestamp in
+        the previous calendar month and an order_status of paid,
+        processing, shipped, or delivered, then divide by 100.
+  constraints:
+    - id: no-internal-identifiers
+      constraint: Never show order_id or customer_id to a customer,
+        these are internal identifiers.
+schema:
+  - name: orders
+    physicalType: TABLE
+    properties:
+      - name: order_id
+        logicalType: string
+        primaryKey: true`
+  },
+  {
     id: 'full-contract',
     title: 'Full Example',
-    description: 'Here is the full data contract bringing all the elements together: fundamentals, a schema with two tables, data quality rules, team, terms of use, servers, and custom properties.',
+    description: 'Here is the full data contract bringing all the elements together: fundamentals, a schema with two tables, data quality rules, team, terms of use, AI context, servers, and custom properties.',
     code: fullContractYaml
   }
 ]

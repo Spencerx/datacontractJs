@@ -1,4 +1,4 @@
-apiVersion: v3.1.0
+apiVersion: v3.2.0
 kind: DataContract
 id: orders
 name: Orders
@@ -16,10 +16,37 @@ description:
     - url: "https://entropy-data.com/policies/gdpr-compliance"
       type: "businessDefinition"
       description: "GDPR compliance policy for handling customer data"
+context:
+  instructions: |
+    This contract describes web shop orders and their line items.
+    Join line_items to orders on line_items.order_id = orders.order_id.
+    All monetary values (orders.order_total, line_items.price) are integers in cents,
+    so divide them by 100 before presenting an amount to a user.
+    Revenue only includes orders with an order_status of paid, processing, shipped, or delivered.
+  verifiedStatements:
+    - id: monthly-revenue
+      question: What was the revenue last month?
+      answer: |
+        Sum orders.order_total for all orders with an order_timestamp in the previous calendar
+        month and an order_status of paid, processing, shipped, or delivered, then divide by 100.
+    - id: best-selling-products
+      question: Which products sold best?
+      answer: |
+        Group line_items by sku and count the line items that belong to orders that are neither
+        cancelled nor refunded. The sku identifies the purchased product.
+  constraints:
+    - id: no-internal-identifiers
+      constraint: Never show order_id or customer_id to a customer, these are internal identifiers.
+    - id: no-customer-profiling
+      constraint: Do not use this data to profile or re-identify individual customers.
 schema:
   - name: orders
     physicalType: TABLE
     description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.
+    context:
+      instructions: |
+        One row per order. Every order has at least one row in line_items.
+        Orders with an order_status of pending, cancelled, or refunded are not sales.
     properties:
       - name: order_id
         logicalType: string
